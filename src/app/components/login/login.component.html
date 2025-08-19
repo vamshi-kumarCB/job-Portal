@@ -1,30 +1,67 @@
-
 <div class="parent">
-    
-<mat-card class="example-card" appearance="outlined">
+  <mat-card class="example-card" appearance="outlined">
     <h1>Login</h1>
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>Email</mat-label>
-    <input type="email" matInput><br>
-  </mat-form-field>
 
-  <mat-form-field appearance="fill" class="example-full-width">
-    <mat-label>Enter your password</mat-label>
-    <input matInput [type]="hide ? 'password' : 'text'">
-    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-    </button>
-  </mat-form-field>
+    <form [formGroup]="loginForm" class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input type="email" formControlName="email" matInput />
+      </mat-form-field>
 
-  
-  <button mat-raised-button class="submit" color="primary">Login</button>
-  <br><br>
+      <div
+        *ngIf="
+          loginForm.get('email')?.touched && loginForm.get('email')?.invalid
+        "
+      >
+        <p *ngIf="loginForm.get('email')?.errors?.['required']">*Required</p>
+      </div>
 
-  <mat-divider></mat-divider><br>
+      <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input
+          formControlName="password"
+          matInput
+          [type]="hide ? 'password' : 'text'"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Toggle password visibility'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
 
-  <button mat-raised-button class="submit" color="primary">Create New Account</button>
+      <div
+        *ngIf="
+          loginForm.get('password')?.touched &&
+          loginForm.get('password')?.invalid
+        "
+      >
+        <p *ngIf="loginForm.get('password')?.errors?.['required']">*Required</p>
+      </div>
 
-</form>
-</mat-card>
+      <button
+        mat-raised-button
+        class="submit"
+        (click)="login()"
+        color="primary"
+      >
+        Login
+      </button>
+
+      <mat-divider class="divider"></mat-divider>
+
+      <button
+        mat-raised-button
+        class="submit"
+        color="primary"
+        routerLink="/registration"
+      >
+        Create New Account
+      </button>
+    </form>
+  </mat-card>
 </div>
