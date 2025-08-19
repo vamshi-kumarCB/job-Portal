@@ -1,0 +1,133 @@
+<div class="parent">
+  <mat-card class="example-card" appearance="outlined">
+    <h1>Create Account</h1>
+    <form class="example-form" [formGroup]="registrationForm">
+      <mat-form-field class="example-full-width">
+        <mat-label>Name</mat-label>
+        <input type="text" formControlName="name" matInput /><br />
+      </mat-form-field>
+      <div
+        *ngIf="
+          registrationForm.get('name')?.touched &&
+          registrationForm.get('name')?.invalid
+        "
+      >
+        <p *ngIf="registrationForm.get('name')?.errors?.['required']">
+          *Required
+        </p>
+      </div>
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input type="email" formControlName="email" matInput /><br />
+      </mat-form-field>
+
+       <div
+        *ngIf="
+          registrationForm.get('email')?.touched &&
+          registrationForm.get('email')?.invalid
+        "
+      >
+        <p *ngIf="registrationForm.get('email')?.errors?.['required']">
+          *Required
+        </p>
+      </div>
+
+
+      <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>Enter your password</mat-label>
+        <input
+          matInput
+          formControlName="password"
+          [type]="hide ? 'password' : 'text'"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+      <div
+        *ngIf="
+          registrationForm.get('password')?.touched &&
+          registrationForm.get('password')?.invalid
+        "
+      >
+        <p *ngIf="registrationForm.get('password')?.errors?.['required']">
+          *Required
+        </p>
+        <p *ngIf="registrationForm.get('password')?.errors?.['pattern']">
+          *Password must contain at least one number, one uppercase and a
+          lowercase letter and at least 8 characters<br />Password cannot
+          contain whitespace
+        </p>
+      </div>
+
+      <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>Confirm your password</mat-label>
+        <input
+          formControlName="confirmpassword"
+          matInput
+          [type]="hiden ? 'password' : 'text'"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hiden = !hiden"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hiden"
+        >
+          <mat-icon>{{ hiden ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+      <div
+        *ngIf="
+          registrationForm.get('confirmpassword')?.touched &&
+          registrationForm.get('confirmpassword')?.invalid
+        "
+      >
+        <p
+          *ngIf="registrationForm.get('confirmpassword')?.errors?.['required']"
+        >
+          *Required
+        </p>
+        <p
+          *ngIf="registrationForm.get('confirmpassword')?.errors?.['passwordsNotMatching']"
+        >
+          Password not matched
+        </p>
+      </div>
+
+      <section class="example-section">
+        <mat-checkbox formControlName="consent" class="example-margin" color="primary"
+          >I agree all statements in <a href="">Terms&conditions</a>
+        </mat-checkbox>
+      </section>
+      <div
+        *ngIf="
+          registrationForm.get('consent')?.touched &&
+          registrationForm.get('consent')?.invalid
+        "
+      >
+        <p *ngIf="registrationForm.get('consent')?.errors?.['required']">
+          *Required
+        </p>
+      </div>
+
+
+      <button
+        mat-raised-button
+        class="submit"
+        color="primary"
+        (click)="signup()"
+      >
+        Sign Up
+      </button>
+    </form>
+
+    <h4>Have already an account?<a href="/login"> Login Here</a></h4>
+  </mat-card>
+</div>

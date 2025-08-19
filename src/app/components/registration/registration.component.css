@@ -1,10 +1,12 @@
-/* Container setup */
+/* Main container to center the card */
 .parent {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  min-height: 100vh;
   background-color: #f5f5f5;
   box-sizing: border-box;
 }
@@ -12,7 +14,7 @@
 /* Card styling */
 .example-card {
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   padding: 2rem;
   border-radius: 20px;
   border: 5px solid rgba(11, 11, 227, 0.675);
@@ -22,25 +24,26 @@
 /* Title */
 h1 {
   text-align: center;
-  color: #222;
   margin-bottom: 1rem;
-  text-decoration: underline;
+  color: #222;
   font-size: 2rem;
+  text-decoration: underline;
+  font-weight: bold;
 }
 
-/* Form layout */
+/* Form styling */
 .example-form {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
 }
 
-/* Inputs */
+/* Input field full width */
 .example-full-width {
   width: 100%;
 }
 
-/* Submit buttons */
+/* Submit button styling */
 .submit {
   width: 100%;
   height: 48px;
@@ -57,27 +60,53 @@ h1 {
   background-color: rgba(11, 11, 227, 0.9);
 }
 
-/* Divider spacing */
-.divider {
-  margin: 1rem 0;
+/* Error text */
+p {
+  color: red;
+  margin: 0;
+  font-size: 0.9rem;
 }
 
-/* Responsive tweaks (optional) */
-@media screen and (max-width: 480px) {
-  h1 {
-    font-size: 1.5rem;
-  }
+/* Terms & conditions checkbox */
+.example-section {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
 
+/* Account redirect link */
+h4 {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+h4 a {
+  color: #0a0aff;
+  text-decoration: none;
+}
+
+h4 a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive tweaks */
+@media screen and (max-width: 480px) {
   .example-card {
     padding: 1rem;
   }
 
-  .submit {
-    font-size: 0.95rem;
-    height: 44px;
+  h1 {
+    font-size: 1.5rem;
   }
-}
 
-p{
-  color: red;
+  .submit {
+    height: 44px;
+    font-size: 0.95rem;
+  }
+
+  .example-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
