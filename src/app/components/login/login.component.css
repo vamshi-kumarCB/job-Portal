@@ -1,0 +1,47 @@
+.parent{
+    width: 98.7%;
+    height: 97%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h1{
+    text-align: center;
+    margin-top: 5%;
+    margin-left: 40%;
+    color: rgb(4, 4, 4);
+    text-decoration: underline;
+    width: 70px;
+    
+
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 90%;
+  margin-left: 4%;
+  margin-top: 5%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+.example-card {
+  max-width: 400px;
+  min-height: 450px;
+  border-radius: 50px;
+  border: 10px rgba(11, 11, 227, 0.675) solid;
+  
+}
+.submit{
+    width: 200px;
+    height: 50px;
+    margin-left: 20%;
+    background-color: rgba(11, 11, 227, 0.675);
+    font-size: medium;
+    font-weight:bold;
+    border-radius: 20px ;
+    border: 5px rgb(42, 41, 41) solid;
+    color: white;
+    
+}
